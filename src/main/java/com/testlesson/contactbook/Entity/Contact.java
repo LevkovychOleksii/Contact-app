@@ -1,22 +1,12 @@
 package com.testlesson.contactbook.Entity;
 
 public class Contact {
-    private Long id;
     private String Name;
-    private Long phoneNumber;
+    private String phoneNumber;
 
-    public Contact(Long id, String name, Long phoneNumber) {
-        this.id = id;
+    public Contact(String name, String phoneNumber) {
         Name = name;
         this.phoneNumber = phoneNumber;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -27,11 +17,11 @@ public class Contact {
         Name = name;
     }
 
-    public Long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
