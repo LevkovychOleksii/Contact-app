@@ -19,6 +19,7 @@ public class AddFrame extends JFrame {
     private JPanel panel2;
     private DBConnection dbConnection;
     public AddFrame(){
+        contact = new Contact();
         dbConnection = new DBConnection();
         label = new JLabel("Write information of the new contact");
         label.setFont(new Font("MV Boli", Font.PLAIN, 30));
@@ -27,6 +28,8 @@ public class AddFrame extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                contact.setName(fieldName.getText());
+                contact.setPhoneNumber(phoneNumber.getText());
                 try{
                     dbConnection.addContact(contact.getName(), contact.getPhoneNumber());
                 }
@@ -66,7 +69,5 @@ public class AddFrame extends JFrame {
         panel1.add(phoneNumber);
         panel1.add(panel2);
         panel2.add(addButton);
-
-
     }
 }

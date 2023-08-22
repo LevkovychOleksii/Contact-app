@@ -13,7 +13,6 @@ public class Frame extends JFrame {
     private JPanel buttonPanel;
     private JLabel label;
     public Frame(){
-        ImageIcon imageIcon = new ImageIcon("icon.jpg");
         label = new JLabel("Hello, choose the operation");
         label.setFont(new Font("MV Boli", Font.PLAIN, 30));
 
@@ -53,8 +52,6 @@ public class Frame extends JFrame {
         this.setBackground(Color.blue);
         this.setTitle("Contacts");
         this.getContentPane().setBackground( Color.ORANGE );
-        this.setIconImage(imageIcon.getImage());
-
 
         this.add(label);
         this.add(buttonPanel);
@@ -64,6 +61,4 @@ public class Frame extends JFrame {
         buttonPanel.add(findButton);
         buttonPanel.add(deleteButton);
     }
-
-
 }

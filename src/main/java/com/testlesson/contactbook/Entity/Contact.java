@@ -4,10 +4,6 @@ public class Contact {
     private String Name;
     private String phoneNumber;
 
-    public Contact(String name, String phoneNumber) {
-        Name = name;
-        this.phoneNumber = phoneNumber;
-    }
 
     public String getName() {
         return Name;

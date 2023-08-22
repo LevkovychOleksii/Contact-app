@@ -9,11 +9,12 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-//        JFrame frame = new Frame();
-        DBConnection db = new DBConnection();
-
-        db.addContact("John Kock", "123-123-123");
-        db.closeAll();
+         JFrame frame = new FindFrame();
+//        DBConnection db = new DBConnection();
+//        db.findContact("Johny");
+//
+//        db.addContact("John Kock", "123-123-123");
+//        db.closeAll();
     }
 
 }

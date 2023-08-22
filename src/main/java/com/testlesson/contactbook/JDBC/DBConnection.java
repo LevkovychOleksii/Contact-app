@@ -13,25 +13,9 @@ public class DBConnection {
 
     public DBConnection(){
         try{
-            // Встановлення з'єднання
             connection = DriverManager.getConnection(url, username, password);
 
-            // Створення об'єкта для виконання SQL-запитів
             statement = connection.createStatement();
-
-            String query = "SELECT * FROM contacts";
-            resultSet = statement.executeQuery(query);
-
-            // Обробка результатів запиту
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("first_name");
-                String surname = resultSet.getString("last_name");
-                // Додаткові поля з бази даних
-                // ...
-
-                System.out.println("ID: " + id + ", Name: " + name + ", Surname: " + surname);
-            }
         }
         catch(SQLException e){
             System.out.println(e);
@@ -41,20 +25,37 @@ public class DBConnection {
     public void addContact(String name, String phoneNumber) throws SQLException{
         String insertQuery = "INSERT INTO contacts (name, phone_number) VALUES (?, ?)";
 
-        // Заповнення даних клієнта
-        String clientName = "John Doe";
-        String clientPhone = "123-456-7890";
+        String clientName = name;
+        String clientPhone = phoneNumber;
 
-        // Підготовка запиту
         preparedStatement = connection.prepareStatement(insertQuery);
         preparedStatement.setString(1, clientName);
         preparedStatement.setString(2, clientPhone);
         preparedStatement.executeUpdate();
     }
+    public String findContact(String name) throws SQLException{
+        String selectQuery = "SELECT * FROM contacts WHERE name='" + name + "';";
+        String clientName = "error";
+        String clientPhone = "error";
+
+        resultSet = statement.executeQuery(selectQuery);
+
+        while (resultSet.next()) {
+            clientName = resultSet.getString("name");
+            clientPhone = resultSet.getString("phone_number");
+
+
+        }
+        if(clientName.equals("error") || clientPhone.equals("error")){
+            return "Contact is not found";
+        }
+        return "Name: " + clientName + " | Phone: " + clientPhone;
+    }
+
     public void closeAll() throws SQLException{
         connection.close();
         statement.close();
         preparedStatement.close();
-        resultSet.close();
+//        resultSet.close();
     }
 }
