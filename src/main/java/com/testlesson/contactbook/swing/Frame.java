@@ -52,6 +52,7 @@ public class Frame extends JFrame {
         this.setBackground(Color.blue);
         this.setTitle("Contacts");
         this.getContentPane().setBackground( Color.ORANGE );
+        this.setResizable(false);
 
         this.add(label);
         this.add(buttonPanel);

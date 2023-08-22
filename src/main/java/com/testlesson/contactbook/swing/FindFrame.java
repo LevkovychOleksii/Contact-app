@@ -24,23 +24,19 @@ public class FindFrame extends JFrame {
     private DBConnection dbConnection;
     public FindFrame(){
         dbConnection = new DBConnection();
-        label = new JLabel("Write information to find");
+        label = new JLabel("To find contact write the name");
         label.setFont(new Font("MV Boli", Font.PLAIN, 30));
 
         fieldName = new JTextField("Name");
         fieldName.setPreferredSize(new Dimension(200, 30));
 
-        informationLabel = new JTextField("Information");
+        informationLabel = new JTextField("");
         informationLabel.setPreferredSize(new Dimension(250, 30));
         informationLabel.setBackground(Color.YELLOW);
-        // Створюємо об'єкт рамки з бажаним кольором
-//        Border border = LineBorder.createBlackLineBorder();
 
-        // Встановлюємо рамку для JTextField
         informationLabel.setBorder(LineBorder.createGrayLineBorder());
+        informationLabel.setEditable(false);
 
-//        phoneNumber = new JTextField("Phone");
-//        phoneNumber.setPreferredSize(new Dimension(200, 30));
         find = new JButton("Find");
         find.addActionListener(new ActionListener() {
             @Override
@@ -75,18 +71,16 @@ public class FindFrame extends JFrame {
         this.setLayout(new FlowLayout());
         this.getContentPane().setBackground( Color.ORANGE );
         this.setTitle("Contacts");
+        this.setResizable(false);
 
         this.add(label);
         this.add(panel1);
 
         panel1.add(fieldName);
-//        panel1.add(informationLabel);
         panel1.add(panel2);
-//        panel1.add(panel3);
+
         panel2.add(informationLabel);
         panel2.add(find);
-//        panel3.add(informationLabel);
-
 
     }
 }

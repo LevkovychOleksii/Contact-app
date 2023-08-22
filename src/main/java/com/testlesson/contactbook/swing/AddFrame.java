@@ -61,6 +61,7 @@ public class AddFrame extends JFrame {
         this.setLayout(new FlowLayout());
         this.getContentPane().setBackground( Color.ORANGE );
         this.setTitle("Contacts");
+        this.setResizable(false);
 
         this.add(label);
         this.add(panel1);

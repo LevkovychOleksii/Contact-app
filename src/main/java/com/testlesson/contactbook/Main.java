@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-         JFrame frame = new FindFrame();
+         JFrame frame = new DeleteFrame();
 //        DBConnection db = new DBConnection();
 //        db.findContact("Johny");
 //

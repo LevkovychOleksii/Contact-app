@@ -3,9 +3,9 @@ package com.testlesson.contactbook.JDBC;
 import java.sql.*;
 
 public class DBConnection {
-    private String url = "jdbc:mysql://localhost:3306/testschema";
-    private String username = "root";
-    private String password = "1234";
+    private static final String url = "jdbc:mysql://localhost:3306/testschema";
+    private static final String username = "root";
+    private static final String password = "1234";
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
@@ -33,6 +33,10 @@ public class DBConnection {
         preparedStatement.setString(2, clientPhone);
         preparedStatement.executeUpdate();
     }
+    public void deleteContact(String name) throws SQLException{
+        String deleteQuery = "DELETE FROM contacts WHERE name='" + name + "';";
+        statement.executeUpdate(deleteQuery);
+    }
     public String findContact(String name) throws SQLException{
         String selectQuery = "SELECT * FROM contacts WHERE name='" + name + "';";
         String clientName = "error";
@@ -56,6 +60,5 @@ public class DBConnection {
         connection.close();
         statement.close();
         preparedStatement.close();
-//        resultSet.close();
     }
 }
