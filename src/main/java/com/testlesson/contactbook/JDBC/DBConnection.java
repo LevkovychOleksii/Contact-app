@@ -33,9 +33,19 @@ public class DBConnection {
         preparedStatement.setString(2, clientPhone);
         preparedStatement.executeUpdate();
     }
-    public void deleteContact(String name) throws SQLException{
+    public String deleteContact(String name) throws SQLException{
+
+        String selectQuery = "SELECT * FROM contacts WHERE name='" + name + "';";
+//        statement = connection.prepareStatement(selectQuery);
+//        statement.setInt(1, clientId);
+        ResultSet resultSet = statement.executeQuery(selectQuery);
+
+        if (!resultSet.next()) {
+            return "Contact " + name + " does not exist.";
+        }
         String deleteQuery = "DELETE FROM contacts WHERE name='" + name + "';";
         statement.executeUpdate(deleteQuery);
+        return "The contact has been deleted.";
     }
     public String findContact(String name) throws SQLException{
         String selectQuery = "SELECT * FROM contacts WHERE name='" + name + "';";

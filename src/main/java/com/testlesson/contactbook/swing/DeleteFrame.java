@@ -35,31 +35,17 @@ public class DeleteFrame extends JFrame {
         informationLabel.setBorder(LineBorder.createGrayLineBorder());
         informationLabel.setEditable(false);
 
-        deleteButton = new JButton("Find");
+        deleteButton = new JButton("Delete");
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
                     String name = fieldName.getText();
-                    dbConnection.deleteContact(name);
-                    informationLabel.setText("Contact " + name + " has been deleted");
+                    informationLabel.setText(dbConnection.deleteContact(name));
                 }
                 catch (SQLException sql){
                     System.out.println(sql);
                 }
-            }
-        });
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String name = fieldName.getText();
-                try{
-                    informationLabel.setText(dbConnection.findContact(name));
-                }
-                catch(SQLException sql){
-                    System.out.println(sql);
-                }
-
             }
         });
         panel1 = new JPanel();
