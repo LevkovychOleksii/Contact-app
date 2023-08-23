@@ -57,7 +57,6 @@ public class Frame extends JFrame {
         this.add(label);
         this.add(buttonPanel);
 
-//        buttonPanel.add(label);
         buttonPanel.add(addButton);
         buttonPanel.add(findButton);
         buttonPanel.add(deleteButton);

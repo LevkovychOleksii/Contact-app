@@ -36,8 +36,6 @@ public class DBConnection {
     public String deleteContact(String name) throws SQLException{
 
         String selectQuery = "SELECT * FROM contacts WHERE name='" + name + "';";
-//        statement = connection.prepareStatement(selectQuery);
-//        statement.setInt(1, clientId);
         ResultSet resultSet = statement.executeQuery(selectQuery);
 
         if (!resultSet.next()) {
